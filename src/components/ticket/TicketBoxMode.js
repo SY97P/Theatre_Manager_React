@@ -51,7 +51,8 @@ export function TicketBoxMode() {
     return (
         <>
             <div className="col-md-8 mt-4 d-flex flex-column align-items-start p-3 pt-0">
-                <PerformanceList performances={performances} mode={Mode.TICKET_MODE} onClickEventHandler={handleAddClicked}/>
+                <PerformanceList performances={performances} mode={Mode.TICKET_MODE}
+                                 onClickEventHandler={handleAddClicked}/>
             </div>
             <div className="col-md-4 summary p-4">
                 <Order tickets={tickets} onTicketOrderSubmit={handleSubmit} onTicketRemoveHandler={handleTicketRemove}/>

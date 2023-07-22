@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Ticket({ index, performanceName, price, reservedDate, onTicketRemoveHandler }) {
+export function Ticket({index, performanceName, price, reservedDate, onTicketRemoveHandler}) {
     const handleRemoveBtnClick = e => {
         onTicketRemoveHandler(index);
     }
@@ -20,7 +20,9 @@ export function Ticket({ index, performanceName, price, reservedDate, onTicketRe
                     </div>
                 </div>
             </div>
-            <button className="btn btn-danger btn-sm position-absolute top-0 end-0 m-2" onClick={handleRemoveBtnClick}>제거</button>
+            <button className="btn btn-danger btn-sm position-absolute top-0 end-0 m-2"
+                    onClick={handleRemoveBtnClick}>제거
+            </button>
         </div>
     );
 }

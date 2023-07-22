@@ -24,13 +24,14 @@ export function Order({tickets, onTicketOrderSubmit, onTicketRemoveHandler}) {
                         performanceName={ticket.performance.performanceName}
                         price={ticket.performance.price}
                         reservedDate={ticket.reservedDate}
-                        onTicketRemoveHandler={onTicketRemoveHandler} />
+                        onTicketRemoveHandler={onTicketRemoveHandler}/>
             )}
             <hr/>
             <form>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">이메일</label>
-                    <input type="email" className="form-control mb-1" value={email} onChange={e => setEmail(e.target.value)} id="email"/>
+                    <input type="email" className="form-control mb-1" value={email}
+                           onChange={e => setEmail(e.target.value)} id="email"/>
                 </div>
             </form>
             <div className="row pt-2 pb-2 border-top">

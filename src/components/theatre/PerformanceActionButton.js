@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Mode } from '../vo/Mode';
+import React, {useState} from 'react';
+import {Mode} from '../vo/Mode';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-export function PerformanceActionButton({ performanceId, openRun, closeRun, mode, onClickEventHandler }) {
+export function PerformanceActionButton({performanceId, openRun, closeRun, mode, onClickEventHandler}) {
     const [selectedDate, setSelectedDate] = useState(null);
 
     const handleRemoveBtnClicked = e => {

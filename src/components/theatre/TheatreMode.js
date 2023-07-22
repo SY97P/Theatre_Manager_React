@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {PerformanceList} from "./PerformanceList";
 import {Registration} from "./Registration";
@@ -62,7 +62,8 @@ export function TheatreMode() {
     return (
         <>
             <div className="col-md-8 mt-4 d-flex flex-column align-items-start p-3 pt-0">
-                <PerformanceList performances={performances} mode={Mode.THEATRE_MODE} onClickEventHandler={handleRemoveClicked}/>
+                <PerformanceList performances={performances} mode={Mode.THEATRE_MODE}
+                                 onClickEventHandler={handleRemoveClicked}/>
             </div>
             <div className="col-md-4 summary p-4">
                 <Registration onRegisterSubmit={handleRegisterSubmit}/>

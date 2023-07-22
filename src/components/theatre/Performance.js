@@ -1,12 +1,23 @@
 import React from 'react';
 import {PerformanceActionButton} from "./PerformanceActionButton";
 
-export function Performance({performanceId, performanceName, genre, ageRate, openRun, closeRun, stage, price, mode, onClickEventHandler}) {
+export function Performance({
+                                performanceId,
+                                performanceName,
+                                genre,
+                                ageRate,
+                                openRun,
+                                closeRun,
+                                stage,
+                                price,
+                                mode,
+                                onClickEventHandler
+                            }) {
     return (
         <div className="performance-card card mb-3">
             <div className="row g-0">
                 <div className="col-md-4 d-flex align-items-center">
-                    <img src="https://i.imgur.com/HKOFQYa.jpeg" alt="" className="img-fluid rounded-start" />
+                    <img src="https://i.imgur.com/HKOFQYa.jpeg" alt="" className="img-fluid rounded-start"/>
                 </div>
                 <div className="col-md-8">
                     <div className="card-body">
@@ -26,7 +37,8 @@ export function Performance({performanceId, performanceName, genre, ageRate, ope
                     </div>
                 </div>
             </div>
-            <PerformanceActionButton performanceId={performanceId} openRun={openRun} closeRun={closeRun} mode={mode} onClickEventHandler={onClickEventHandler}/>
+            <PerformanceActionButton performanceId={performanceId} openRun={openRun} closeRun={closeRun} mode={mode}
+                                     onClickEventHandler={onClickEventHandler}/>
         </div>
     );
 }

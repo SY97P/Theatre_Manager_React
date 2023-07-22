@@ -8,9 +8,9 @@ export function Registration({onRegisterSubmit}) {
     const handlePerformanceNameInputChanged = e => setPerformance({...performance, performanceName: e.target.value});
     const handleOpenRunInputChanged = e => setPerformance({...performance, openRun: e.target.value});
     const handleCloseRunInputChanged = e => setPerformance({...performance, closeRun: e.target.value});
-    const handleGenreInputChanged = e => setPerformance({ ...performance, genre: e.target.value});
-    const handleAgeRateInputChanged = e => setPerformance({ ...performance, ageRate: e.target.value});
-    const handleStageInputChanged = e => setPerformance({ ...performance, stage: e.target.value});
+    const handleGenreInputChanged = e => setPerformance({...performance, genre: e.target.value});
+    const handleAgeRateInputChanged = e => setPerformance({...performance, ageRate: e.target.value});
+    const handleStageInputChanged = e => setPerformance({...performance, stage: e.target.value});
     const handlePriceInputChanged = e => setPerformance({...performance, price: e.target.value});
 
     const handleSubmit = e => {
