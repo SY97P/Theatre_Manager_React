@@ -1,24 +1,40 @@
-import logo from './logo.svg';
+import React from 'react';
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import './App.css';
+import {TheatreMode} from "./components/theatre/TheatreMode";
+import {TicketBoxMode} from "./components/ticket/TicketBoxMode";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="container-fluid">
+        <Router>
+          <div>
+            <div className="row justify-content-center m-4">
+              <h1 className="text-center">Grids & Circle</h1>
+            </div>
+
+            <h1>앱의 시작</h1>
+            <ul>
+              <li>
+                <Link to="/theatre">Theatre 모드</Link>
+              </li>
+              <li>
+                <Link to="/ticket">Ticket 모드</Link>
+              </li>
+            </ul>
+
+            <div className="card">
+              <div className="row">
+                <Routes>
+                  <Route path="/theatre" element={<TheatreMode />} />
+                  <Route path="/ticket" element={<TicketBoxMode />} />
+                </Routes>
+              </div>
+            </div>
+          </div>
+        </Router>
+      </div>
+
   );
 }
 
