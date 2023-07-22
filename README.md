@@ -18,10 +18,18 @@
     - 공연 기간이 아닌 날짜를 선택했을때 알림
     - 최종 구매한 티켓에 대해서 결제
 
+### 🔗 BackEnd Link
+Github: [Theatre Manager SpringBoot](https://github.com/SY97P/Theatre_Manager_SpringBoot.git)
+
 ### 🧬 Flow Chart
 ![flow_chart.png](summary%2Fflow_chart.png)
 
+### Screen Shot
+![reservation_mode.png](summary%2Freservation_mode.png)
+![theatre_mode.png](summary%2Ftheatre_mode.png)
+![ticket_box_mode.png](summary%2Fticket_box_mode.png)
 
+<hr />
 
 # Getting Started with Create React App
 
