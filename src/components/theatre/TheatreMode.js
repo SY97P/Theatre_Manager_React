@@ -3,6 +3,7 @@ import axios from 'axios';
 import {PerformanceList} from "./PerformanceList";
 import {Registration} from "./Registration";
 import {Mode} from "../vo/Mode";
+import '../../Mode.css';
 
 export function TheatreMode() {
     const [performances, setPerformances] = useState([]);

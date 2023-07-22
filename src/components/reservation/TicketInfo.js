@@ -1,7 +1,7 @@
 import React from 'react';
 
-export function TicketInfo({ ticket }) {
-    const { ticketId, orderId, performanceId, ticketPrice, reservedDate } = ticket;
+export function TicketInfo({ticket}) {
+    const {ticketId, orderId, performanceId, ticketPrice, reservedDate} = ticket;
 
     return (
         <div className="card">

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import axios from "axios";
 
-export function Search({ onOrderDataChanged }) {
+export function Search({onOrderDataChanged}) {
     const [searchedOrder, setSearchedOrder] = useState({
         orderId: "", email: "", orderedAt: "", ticketOrderStatus: "", tickets: []
     });
@@ -82,7 +82,7 @@ export function Search({ onOrderDataChanged }) {
                 </div>
             </form>
 
-            <hr />
+            <hr/>
 
             <button className="btn btn-dark col-12" onClick={handleDeleteOrder}>
                 주문 취소하기

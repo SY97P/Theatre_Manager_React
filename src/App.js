@@ -8,11 +8,11 @@ import {ReservationMode} from "./components/reservation/ReservationMode";
 
 function App() {
     return (
-        <div className="container-fluid">
+        <div className="container-fluid" style={{ backgroundColor: '#303030' }}>
             <Router>
-                <div>
+                <div style={{paddingLeft: '50px', paddingRight: '50px'}}>
                     <div className="row justify-content-center m-4">
-                        <h1 className="text-center" color="white">🍊 TANGERINE THEATRE 🍊</h1>
+                        <h1 className="text-center" style={{color: 'white'}}>🍊 TANGERINE THEATRE 🍊</h1>
                     </div>
 
                     <div className="row justify-content-end mb-3" style={{marginRight: '50px'}}>
