@@ -11,6 +11,7 @@ export function Registration({onRegisterSubmit}) {
     const handleGenreInputChanged = e => setPerformance({ ...performance, genre: e.target.value});
     const handleAgeRateInputChanged = e => setPerformance({ ...performance, ageRate: e.target.value});
     const handleStageInputChanged = e => setPerformance({ ...performance, stage: e.target.value});
+    const handlePriceInputChanged = e => setPerformance({...performance, price: e.target.value});
 
     const handleSubmit = e => {
         if (performance.performanceName.trim() === "" || performance.genre.trim() === "" || performance.ageRate.trim() === ""
@@ -83,6 +84,18 @@ export function Registration({onRegisterSubmit}) {
                         <option value="B1">B1</option>
                         <option value="B2">B2</option>
                     </select>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="price" className="form-label">
+                        관람료
+                    </label>
+                    <input
+                        type="number"
+                        className="form-control mb-1"
+                        value={performance.price}
+                        onChange={handlePriceInputChanged}
+                        id="price"
+                    />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="openRun" className="form-label">

@@ -5,6 +5,7 @@ body {
 }
 
 .card {
+  padding-left: 20px;
   margin: auto;
   max-width: 1400px;
   width: 90%;

@@ -2,11 +2,12 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {PerformanceList} from "./PerformanceList";
 import {Registration} from "./Registration";
+import {Mode} from "../vo/Mode";
 
 export function TheatreMode() {
     const [performances, setPerformances] = useState([]);
 
-    const deleteById = performanceId => {
+    const deleteById = (performanceId) => {
         axios.post("http://localhost:8080/api/v1/performances/unregister/" + performanceId)
             .then(r => {
                 alert("공연이 정상적으로 제거되었습니다.");
@@ -21,7 +22,7 @@ export function TheatreMode() {
             });
     };
 
-    const handleRemoveClicked = performanceId => {
+    const handleRemoveClicked = (performanceId, selectedDate) => {
         deleteById(performanceId);
     };
 
@@ -35,7 +36,8 @@ export function TheatreMode() {
                 ageRate: performance.ageRate,
                 openRun: performance.openRun,
                 closeRun: performance.closeRun,
-                stage: performance.stage
+                stage: performance.stage,
+                price: performance.price
             }).then(
                 r => {
                     alert("공연이 정상적으로 추가되었습니다.");
@@ -60,7 +62,7 @@ export function TheatreMode() {
     return (
         <>
             <div className="col-md-8 mt-4 d-flex flex-column align-items-start p-3 pt-0">
-                <PerformanceList performances={performances} onRemoveClick={handleRemoveClicked}/>
+                <PerformanceList performances={performances} mode={Mode.THEATRE_MODE} onClickEventHandler={handleRemoveClicked}/>
             </div>
             <div className="col-md-4 summary p-4">
                 <Registration onRegisterSubmit={handleRegisterSubmit}/>
