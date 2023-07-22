@@ -1,11 +1,12 @@
 
 body {
   background: #ddd;
+  padding-bottom: 100px;
 }
 
 .card {
   margin: auto;
-  max-width: 950px;
+  max-width: 1400px;
   width: 90%;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 1rem;
@@ -38,10 +39,6 @@ body {
 .col-2,
 .col {
   padding: 0 1vh
-}
-
-img {
-  width: 3.5rem
 }
 
 hr {

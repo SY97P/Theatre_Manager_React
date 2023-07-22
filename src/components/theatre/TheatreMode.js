@@ -8,17 +8,17 @@ export function TheatreMode() {
 
     const deleteById = performanceId => {
         axios.post("http://localhost:8080/api/v1/performances/unregister/" + performanceId)
-            .then(r => alert("공연이 정상적으로 제거되었습니다."))
+            .then(r => {
+                alert("공연이 정상적으로 제거되었습니다.");
+                const remainPerformances = performances.filter(
+                    performance => performance.performanceId !== performanceId
+                );
+                setPerformances(remainPerformances);
+            })
             .catch(error => {
-                alert("서버 에러");
+                alert("공연 제거 실패 - 서버 에러");
                 console.error(error);
             });
-        getAllPerformance();
-    };
-
-    const getAllPerformance = () => {
-        return axios.get("http://localhost:8080/api/v1/performances")
-            .then(r => setPerformances(r.data));
     };
 
     const handleRemoveClicked = performanceId => {
@@ -30,14 +30,27 @@ export function TheatreMode() {
             alert("공연 정보를 다시 확인해주세요!");
         } else {
             axios.post("http://localhost:8080/api/v1/performances/register", {
-
+                performanceName: performance.performanceName,
+                genre: performance.genre,
+                ageRate: performance.ageRate,
+                openRun: performance.openRun,
+                closeRun: performance.closeRun,
+                stage: performance.stage
             }).then(
-                r => alert("공연이 정상적으로 추가되었습니다."),
+                r => {
+                    alert("공연이 정상적으로 추가되었습니다.");
+                    setPerformances([...performances, performance]);
+                },
                 e => {
-                    alert("서버 에러");
+                    alert("공연 추가 실패 - 서버 에러");
                     console.error(e);
-            })
+                })
         }
+    };
+
+    const getAllPerformance = () => {
+        return axios.get("http://localhost:8080/api/v1/performances")
+            .then(r => setPerformances(r.data));
     };
 
     useEffect(() => {
