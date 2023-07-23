@@ -4,12 +4,14 @@ import {TicketInfo} from "./TicketInfo";
 export function TicketList({order}) {
     return (
         <>
-            <h5 className="flex-grow-0"><b>주문 티켓 목록</b></h5>
+            <div>
+                <h5 className="flex-grow-0"><b>예매티켓 목록: {order.orderId}</b></h5>
+            </div>
             {order.tickets.length === 0 ? (
                 <div className="d-flex justify-content-center align-items-center" style={{height: '200px'}}>
                     <div className="bg-light p-3 rounded">
-                        <h4 className="text-center mb-3">공연 정보가 없습니다</h4>
-                        <p className="text-muted text-center">원하시는 공연 정보가 없습니다.</p>
+                        <h4 className="text-center mb-3">예매내역이 없습니다</h4>
+                        <p className="text-muted text-center">원하시는 예매내역이 없습니다.</p>
                     </div>
                 </div>
             ) : (
