@@ -16,11 +16,15 @@ export function TicketBoxMode() {
         }
         setTickets([...tickets, newTicket]);
     };
-
+    const handleSearchByName = (performanceName) => {
+        axios.get("http://localhost:8080/api/v1/performances/name/" + performanceName)
+            .then(r => setPerformances([r.data]))
+            .catch(e => alert("검색 결과가 없습니다."));
+        console.log(performances);
+    };
     const handleTicketRemove = (index) => {
         setTickets(tickets.filter((v, i) => i !== index));
     };
-
     const handleSubmit = (email) => {
         if (tickets.length === 0) {
             alert("티켓을 추가해주세요!");
@@ -52,7 +56,7 @@ export function TicketBoxMode() {
         <>
             <div className="col-md-8 mt-0 d-flex flex-column align-items-start p-3 pt-0">
                 <PerformanceList performances={performances} mode={Mode.TICKET_MODE}
-                                 onClickEventHandler={handleAddClicked}/>
+                                 onSearchByNameEvent={handleSearchByName} onClickEventHandler={handleAddClicked}/>
             </div>
             <div className="col-md-4 summary p-4">
                 <Order tickets={tickets} onTicketOrderSubmit={handleSubmit} onTicketRemoveHandler={handleTicketRemove}/>
