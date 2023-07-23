@@ -25,6 +25,7 @@ Github: [Theatre Manager SpringBoot](https://github.com/SY97P/Theatre_Manager_Sp
 ![flow_chart.png](summary%2Fflow_chart.png)
 
 ### Screen Shot
+![main_mode.png](summary%2Fmain_mode.png)
 ![reservation_mode.png](summary%2Freservation_mode.png)
 ![theatre_mode.png](summary%2Ftheatre_mode.png)
 ![ticket_box_mode.png](summary%2Fticket_box_mode.png)
