@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
-export function Registration({onRegisterSubmit}) {
+export function Registration({modifyingPerformance, onRegisterSubmit}) {
     const [performance, setPerformance] = useState({
         performanceName: "", genre: "", ageRate: "ALL", openRun: "", closeRun: "", stage: ""
     });
@@ -21,6 +21,10 @@ export function Registration({onRegisterSubmit}) {
             onRegisterSubmit(performance);
         }
     }
+
+    useEffect(() => {
+        setPerformance(modifyingPerformance);
+    }, [modifyingPerformance]);
 
     return (
         <>

@@ -7,6 +7,7 @@ import '../../Mode.css';
 
 export function TheatreMode() {
     const [performances, setPerformances] = useState([]);
+    const [modifyingPerformance, setModifyingPerformance] = useState({});
 
     const deleteById = (performanceId) => {
         axios.post("http://localhost:8080/api/v1/performances/unregister/" + performanceId)
@@ -23,10 +24,13 @@ export function TheatreMode() {
             });
     };
 
+    const handleModifyEvent = (performanceId) => {
+        setModifyingPerformance(performances.find(v => v.performanceId === performanceId));
+        console.log(modifyingPerformance);
+    }
     const handleRemoveClicked = (performanceId, selectedDate) => {
         deleteById(performanceId);
     };
-
     const handleRegisterSubmit = performance => {
         if (performance == null) {
             alert("공연 정보를 다시 확인해주세요!");
@@ -41,7 +45,7 @@ export function TheatreMode() {
                 price: performance.price
             }).then(
                 r => {
-                    alert("공연이 정상적으로 추가되었습니다.");
+                    alert("공연 정보가 정상적으로 등록되었습니다.");
                     setPerformances([...performances, performance]);
                 },
                 e => {
@@ -62,12 +66,12 @@ export function TheatreMode() {
 
     return (
         <>
-            <div className="col-md-8 mt-4 d-flex flex-column align-items-start p-3 pt-0">
+            <div className="col-md-8 mt-0 d-flex flex-column align-items-start p-3 pt-0">
                 <PerformanceList performances={performances} mode={Mode.THEATRE_MODE}
-                                 onClickEventHandler={handleRemoveClicked}/>
+                                 onModifyEvent={handleModifyEvent} onClickEventHandler={handleRemoveClicked}/>
             </div>
             <div className="col-md-4 summary p-4">
-                <Registration onRegisterSubmit={handleRegisterSubmit}/>
+                <Registration modifyingPerformance={modifyingPerformance} onRegisterSubmit={handleRegisterSubmit}/>
             </div>
         </>
     );

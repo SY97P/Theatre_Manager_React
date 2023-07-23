@@ -1,7 +1,7 @@
 import React from 'react';
 import {Performance} from "./Performance";
 
-export function PerformanceList({performances = [], mode, onClickEventHandler}) {
+export function PerformanceList({performances = [], mode, onModifyEvent, onClickEventHandler}) {
     return (
         <>
             <h5 className="flex-grow-0"><b>공연 목록</b></h5>
@@ -16,7 +16,7 @@ export function PerformanceList({performances = [], mode, onClickEventHandler}) 
                 <ul className="list-group products">
                     {performances.map(performance =>
                         <li key={performance.performanceId} className="list-group-item d-flex mt-3">
-                            <Performance {...performance} mode={mode} onClickEventHandler={onClickEventHandler}/>
+                            <Performance {...performance} mode={mode} onModifyEvent={onModifyEvent} onClickEventHandler={onClickEventHandler}/>
                         </li>
                     )}
                 </ul>
