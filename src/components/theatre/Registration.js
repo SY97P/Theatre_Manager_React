@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 
-export function Registration({modifyingPerformance, onUpdateSubmit, onRegisterSubmit}) {
+export function Registration({targetPerformance, onUpdateSubmit, onRegisterSubmit}) {
     const [performance, setPerformance] = useState({
-        performanceId: null, performanceName: "", genre: "", ageRate: "ALL", openRun: "", closeRun: "", stage: ""
+        performanceId: "", performanceName: "", genre: "", ageRate: "ALL", openRun: "", closeRun: "", stage: "", price: ""
     });
 
     const handlePerformanceNameInputChanged = e => setPerformance({...performance, performanceName: e.target.value});
@@ -13,22 +13,26 @@ export function Registration({modifyingPerformance, onUpdateSubmit, onRegisterSu
     const handleStageInputChanged = e => setPerformance({...performance, stage: e.target.value});
     const handlePriceInputChanged = e => setPerformance({...performance, price: e.target.value});
 
-    const handleSubmit = e => {
-        if (performance.performanceName.trim() === "" || performance.genre.trim() === "" || performance.ageRate.trim() === ""
-            || performance.openRun.trim() === "" || performance.closeRun.trim() === "" || performance.stage.trim() === "") {
+    const handleRegisterSubmit = e => {
+        if (performance.performanceName === "" || performance.genre === "" || performance.ageRate === ""
+            || performance.openRun === "" || performance.closeRun === "" || performance.stage === "") {
             alert("누락된 공연 정보가 있습니다. 확인해주세요!");
         } else {
-            if (performance.performanceId === null) {
-                onRegisterSubmit(performance);
-            } else {
-                onUpdateSubmit(performance);
-            }
+            onRegisterSubmit(performance);
         }
     }
+    const handleUpdateSubmit = e => {
+        if (performance.performanceId === "" || performance.performanceName === "" || performance.genre === "" || performance.ageRate === ""
+            || performance.openRun === "" || performance.closeRun === "" || performance.stage === "") {
+            alert("누락된 공연 정보가 있습니다. 확인해주세요!");
+        } else {
+            onUpdateSubmit(performance);
+        }
+    };
 
     useEffect(() => {
-        setPerformance(modifyingPerformance);
-    }, [modifyingPerformance]);
+        setPerformance(targetPerformance);
+    }, [targetPerformance]);
 
     return (
         <>
@@ -130,8 +134,11 @@ export function Registration({modifyingPerformance, onUpdateSubmit, onRegisterSu
                     />
                 </div>
             </form>
-            <button className="btn btn-dark col-12" onClick={handleSubmit}>
+            <button className="btn btn-dark col-12 mb-3" onClick={handleRegisterSubmit}>
                 등록하기
+            </button>
+            <button className="btn btn-dark col-12" onClick={handleUpdateSubmit}>
+                수정하기
             </button>
         </>
     );

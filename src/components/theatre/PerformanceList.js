@@ -1,8 +1,14 @@
 import React, {useState} from 'react';
 import {Performance} from "./Performance";
-import DatePicker from "react-datepicker";
 
-export function PerformanceList({performances = [], mode, onSearchByNameEvent, onModifyEvent, onClickEventHandler}) {
+export function PerformanceList({
+                                    performances = [],
+                                    mode,
+                                    onSearchByNameEvent,
+                                    onModifyEvent,
+                                    onAddEvent,
+                                    onRemoveEvent
+                                }) {
     const [searchName, setSearchName] = useState('');
 
     const onSearchByName = e => {
@@ -46,7 +52,7 @@ export function PerformanceList({performances = [], mode, onSearchByNameEvent, o
                         {performances.map(performance =>
                             <li key={performance.performanceId} className="list-group-item d-flex mt-3">
                                 <Performance {...performance} mode={mode} onModifyEvent={onModifyEvent}
-                                             onClickEventHandler={onClickEventHandler}/>
+                                             onAddEvent={onAddEvent} onRemoveEvent={onRemoveEvent}/>
                             </li>
                         )}
                     </ul>

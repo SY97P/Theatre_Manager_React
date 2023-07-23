@@ -3,14 +3,14 @@ import {Mode} from '../vo/Mode';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-export function PerformanceActionButton({performanceId, openRun, closeRun, mode, onModifyEvent, onClickEventHandler}) {
+export function PerformanceActionButton({performanceId, openRun, closeRun, mode, onModifyEvent, onRemoveEvent, onAddEvent}) {
     const [selectedDate, setSelectedDate] = useState(null);
 
     const handleModifyBtnClicked = e => {
         onModifyEvent(performanceId)
     };
     const handleRemoveBtnClicked = e => {
-        onClickEventHandler(performanceId, selectedDate);
+        onRemoveEvent(performanceId);
     };
     const handleAddBtnClicked = e => {
         if (selectedDate === null || selectedDate === ""
@@ -18,7 +18,7 @@ export function PerformanceActionButton({performanceId, openRun, closeRun, mode,
             || selectedDate.getTime() > new Date(closeRun).getTime()) {
             alert("올바른 관람일을 선택해주세요!");
         } else {
-            onClickEventHandler(performanceId, formatDateToString(selectedDate));
+            onAddEvent(performanceId, formatDateToString(selectedDate));
         }
     };
 

@@ -7,9 +7,9 @@ import '../../Mode.css';
 
 export function TheatreMode() {
     const [performances, setPerformances] = useState([]);
-    const [modifyingPerformance, setModifyingPerformance] = useState({});
+    const [targetPerformance, setTargetPerformance] = useState({});
 
-    const deleteById = (performanceId) => {
+    const handleRemoveClicked = (performanceId) => {
         axios.post("http://localhost:8080/api/v1/performances/unregister/" + performanceId)
             .then(r => {
                 alert("공연이 정상적으로 제거되었습니다.");
@@ -23,14 +23,31 @@ export function TheatreMode() {
                 console.error(error);
             });
     };
-
-    const handleModifyEvent = (performanceId) => {
-        setModifyingPerformance(performances.find(v => v.performanceId === performanceId));
-    }
-    const handleRemoveClicked = (performanceId, selectedDate) => {
-        deleteById(performanceId);
+    const handleRegisterSubmit = performance => {
+        if (performance == null) {
+            alert("공연 정보를 다시 확인해주세요!");
+        } else {
+            axios.post("http://localhost:8080/api/v1/performances/register", {
+                performanceName: performance.performanceName,
+                genre: performance.genre,
+                ageRate: performance.ageRate,
+                openRun: performance.openRun,
+                closeRun: performance.closeRun,
+                stage: performance.stage,
+                price: performance.price
+            }).then(
+                r => {
+                    alert("공연 정보가 정상적으로 추가되었습니다.");
+                    setPerformances([...performances, performance]);
+                },
+                e => {
+                    alert("공연 갱신 실패 - 서버 에러");
+                    console.error(e);
+                })
+        }
     };
     const handleUpdateResult = performance => {
+        console.log(performance);
         if (performance == null) {
             alert("공연 정보를 다시 확인해주세요!");
         } else {
@@ -54,29 +71,6 @@ export function TheatreMode() {
                     console.error(e);
                 })
         }
-    }
-    const handleRegisterSubmit = performance => {
-        if (performance == null) {
-            alert("공연 정보를 다시 확인해주세요!");
-        } else {
-            axios.post("http://localhost:8080/api/v1/performances/register", {
-                performanceName: performance.performanceName,
-                genre: performance.genre,
-                ageRate: performance.ageRate,
-                openRun: performance.openRun,
-                closeRun: performance.closeRun,
-                stage: performance.stage,
-                price: performance.price
-            }).then(
-                r => {
-                    alert("공연 정보가 정상적으로 추가되었습니다.");
-                    setPerformances([...performances, performance]);
-                },
-                e => {
-                    alert("공연 추가 실패 - 서버 에러");
-                    console.error(e);
-                })
-        }
     };
     const handleSearchByName = (performanceName) => {
         axios.get("http://localhost:8080/api/v1/performances/name/" + performanceName)
@@ -84,15 +78,14 @@ export function TheatreMode() {
             .catch(e => alert("검색 결과가 없습니다."));
         console.log(performances);
     };
-
-    const getAllPerformance = () => {
-        return axios.get("http://localhost:8080/api/v1/performances")
-            .then(r => setPerformances(r.data))
-            .catch(e => alert("검색 결과가 없습니다."));
-    };
+    const handleModifyEvent = (performanceId) => {
+        setTargetPerformance(performances.find(v => v.performanceId === performanceId));
+    }
 
     useEffect(() => {
-        getAllPerformance();
+        axios.get("http://localhost:8080/api/v1/performances")
+            .then(r => setPerformances(r.data))
+            .catch(e => alert("검색 결과가 없습니다."));
     }, []);
 
     return (
@@ -100,11 +93,10 @@ export function TheatreMode() {
             <div className="col-md-8 mt-0 d-flex flex-column align-items-start p-3 pt-0">
                 <PerformanceList performances={performances} mode={Mode.THEATRE_MODE}
                                  onSearchByNameEvent={handleSearchByName}
-                                 onModifyEvent={handleModifyEvent} onClickEventHandler={handleRemoveClicked}/>
+                                 onModifyEvent={handleModifyEvent} onRemoveEvent={handleRemoveClicked}/>
             </div>
             <div className="col-md-4 summary p-4">
-                <Registration modifyingPerformance={modifyingPerformance}
-                              onUpdateSubmit={handleUpdateResult} onRegisterSubmit={handleRegisterSubmit}/>
+                <Registration targetPerformance={targetPerformance} onUpdateSubmit={handleUpdateResult} onRegisterSubmit={handleRegisterSubmit}/>
             </div>
         </>
     );

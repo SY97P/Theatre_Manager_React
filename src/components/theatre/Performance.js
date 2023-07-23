@@ -11,8 +11,7 @@ export function Performance({
                                 stage,
                                 price,
                                 mode,
-                                onModifyEvent,
-                                onClickEventHandler
+                                onModifyEvent, onRemoveEvent, onAddEvent
                             }) {
     return (
         <div className="performance-card card mb-3">
@@ -39,7 +38,8 @@ export function Performance({
                 </div>
             </div>
             <PerformanceActionButton performanceId={performanceId} openRun={openRun} closeRun={closeRun} mode={mode}
-                                     onModifyEvent={onModifyEvent} onClickEventHandler={onClickEventHandler}/>
+                                     onModifyEvent={onModifyEvent} onRemoveEvent={onRemoveEvent}
+                                     onAddEvent={onAddEvent}/>
         </div>
     );
 }
