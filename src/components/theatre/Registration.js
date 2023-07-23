@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 
-export function Registration({modifyingPerformance, onRegisterSubmit}) {
+export function Registration({modifyingPerformance, onUpdateSubmit, onRegisterSubmit}) {
     const [performance, setPerformance] = useState({
-        performanceName: "", genre: "", ageRate: "ALL", openRun: "", closeRun: "", stage: ""
+        performanceId: null, performanceName: "", genre: "", ageRate: "ALL", openRun: "", closeRun: "", stage: ""
     });
 
     const handlePerformanceNameInputChanged = e => setPerformance({...performance, performanceName: e.target.value});
@@ -18,7 +18,11 @@ export function Registration({modifyingPerformance, onRegisterSubmit}) {
             || performance.openRun.trim() === "" || performance.closeRun.trim() === "" || performance.stage.trim() === "") {
             alert("누락된 공연 정보가 있습니다. 확인해주세요!");
         } else {
-            onRegisterSubmit(performance);
+            if (performance.performanceId === null) {
+                onRegisterSubmit(performance);
+            } else {
+                onUpdateSubmit(performance);
+            }
         }
     }
 

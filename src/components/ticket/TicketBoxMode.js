@@ -50,7 +50,7 @@ export function TicketBoxMode() {
 
     return (
         <>
-            <div className="col-md-8 mt-4 d-flex flex-column align-items-start p-3 pt-0">
+            <div className="col-md-8 mt-0 d-flex flex-column align-items-start p-3 pt-0">
                 <PerformanceList performances={performances} mode={Mode.TICKET_MODE}
                                  onClickEventHandler={handleAddClicked}/>
             </div>
