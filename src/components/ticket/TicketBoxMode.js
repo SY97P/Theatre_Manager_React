@@ -29,10 +29,12 @@ export function TicketBoxMode() {
         if (tickets.length === 0) {
             alert("티켓을 추가해주세요!");
         } else {
+            const orderId = crypto.randomUUID();
             axios.post("http://localhost:8080/api/v1/ticket-orders/create", {
+                orderId: orderId,
                 email: email,
                 tickets: tickets.map(ticket => ({
-                    performanceId: ticket.performance.performanceId,
+                    orderId: orderId,
                     ticketPrice: ticket.performance.price,
                     reservedDate: ticket.reservedDate
                 }))
