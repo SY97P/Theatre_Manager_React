@@ -1,0 +1,5 @@
+.vertical-line {
+  border-left: 2px solid #ccc; /* 회색 세로선 스타일 */
+  height: 100%;
+  margin: 0 20px; /* 원하는 간격 설정 */
+}
